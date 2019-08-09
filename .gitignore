@@ -63,4 +63,5 @@ fabric.properties
 #过滤eclipse
 .factorypath
 .classpath
-.prefs
+*.prefs
+
