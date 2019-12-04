@@ -14,6 +14,6 @@ import java.io.File;
 public class DirList {
     public static void main(String[] args) {
         File file = new File(".");
-
+        System.out.println("测试");
     }
 }
