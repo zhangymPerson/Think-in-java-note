@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<javaClass>
+    <Book book="书的类型" table="童话">
+        <property name="安徒生" column="1111"></property>
+        <property name="灰姑娘" column="2222"></property>
+    </Book>
+    <Book book="书的类型" table="名著">
+        <property name="偷影子的人" column="8888"></property>
+        <property name="追风筝的人" column="9999"></property>
+        <property name="解忧杂货铺" column="6666"></property>
+        <property name="冰与火的时代" column="7777"></property>
+    </Book>
+</javaClass>
