@@ -60,8 +60,10 @@ crashlytics-build.properties
 fabric.properties
 
 
-#过滤eclipse
+#ignore eclipse
 .factorypath
 .classpath
 *.prefs
 
+#ignore pyhon env
+venv
