@@ -18,4 +18,6 @@ func main() {
 	code.LoopTwo(10)
 	code.ChooseOne()
 	code.VarTest()
+	code.FunTest()
+	fmt.Println("end")
 }
