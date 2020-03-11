@@ -19,5 +19,11 @@ func main() {
 	code.ChooseOne()
 	code.VarTest()
 	code.FunTest()
+	var co code.ClassObj
+	co.Width = 1.0
+	co.Height = 2.0
+	co.Area()
 	fmt.Println("end")
+	code.TestArrAndSliceOne()
+	code.TestArrAndSliceTwo()
 }
