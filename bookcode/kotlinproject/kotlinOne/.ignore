@@ -1,0 +1,8 @@
+# Others
+.idea/
+*.iml
+
+# gradle过滤配置
+build
+.gradle
+gradle
