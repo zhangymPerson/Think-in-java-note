@@ -67,3 +67,6 @@ fabric.properties
 
 #ignore pyhon env
 venv
+
+# vscode
+.vscode
