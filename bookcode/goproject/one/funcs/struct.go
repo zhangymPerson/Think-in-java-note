@@ -1,6 +1,7 @@
 package funcs
 
 import (
+	"fmt"
 	_ "fmt"
 )
 
@@ -17,6 +18,28 @@ type Person struct{
 	Maps map[string]string //
 
 }
+
+
+
+
+func TestStruct(){
+	age := 12
+	p:=Person{"男","张三",12,&age,nil,nil}
+	//结构体本身是值类型
+	p1 := p
+	p1.sex="女"
+	p1.Name="李四"
+	//其中p 和 pp 是两块不同的内存，之间是值传递
+	fmt.Println(p)
+	fmt.Println(p1)
+	//引用传递
+	p2 := &p
+	fmt.Println("-----------------------------------------------------------------")
+	p2.Name="你猜我改的是谁"
+	fmt.Println(p)
+	fmt.Println(*p2)
+}
+
 
 //方法
 
