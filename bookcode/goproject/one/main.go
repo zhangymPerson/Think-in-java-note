@@ -14,7 +14,9 @@ func main(){
 	// funcs.privateFunc()
 	funcs.PublicFunc()
 	fmt.Println("----------------------------------")
-	funcs.TestStruct()
+	funcs.TestStructOne()
+	fmt.Println("----------------------------------")
+	funcs.TestStructTwo()
 	fmt.Println("----------------------------------")
 	var p funcs.Person
 	p.Name="测试"

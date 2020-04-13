@@ -2,7 +2,6 @@ package funcs
 
 import (
 	"fmt"
-	_ "fmt"
 )
 
 type Person struct{
@@ -19,10 +18,35 @@ type Person struct{
 
 }
 
+//方法
+//结构体本身是值传递
+func (p Person) sayHello() {
+	//结构体的值传递 不会影响 调用的实例对象
+	p.Name = "Hello"
+	fmt.Println(p.Name + " say Hello!")
+} 
+
+//指针是引用传递
+func (p *Person) sayHi() {
+	//引用传递修改 会影响 调用的实例
+	p.Name = "Hi"
+	fmt.Println(p.Name + " say Hi")
+}
+
+//方法值传递和引用传递的对比测试
+func TestStructTwo(){
+	age := 12
+	p:=Person{"男","张三",12,&age,nil,nil}
+	fmt.Println("原生的 p = ",p)
+	p.sayHello()
+	fmt.Println("值传递之后的p = ",p)
+	p.sayHi()
+	fmt.Println("引用传递之后的p = ",p)
+}
 
 
 
-func TestStruct(){
+func TestStructOne(){
 	age := 12
 	p:=Person{"男","张三",12,&age,nil,nil}
 	//结构体本身是值类型
@@ -39,10 +63,3 @@ func TestStruct(){
 	fmt.Println(p)
 	fmt.Println(*p2)
 }
-
-
-//方法
-
-// func (Person) toString() string {
-// 	fmt.Print()
-// }
