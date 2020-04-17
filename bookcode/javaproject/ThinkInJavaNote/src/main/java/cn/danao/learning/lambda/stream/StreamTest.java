@@ -1,4 +1,4 @@
-package cn.danao.learning.stream;
+package cn.danao.learning.lambda.stream;
 
 import cn.danao.learning.lambda.bean.Person;
 import lombok.extern.slf4j.Slf4j;
@@ -6,7 +6,6 @@ import org.junit.Test;
 
 import java.util.*;
 import java.util.stream.Stream;
-import java.util.stream.StreamSupport;
 
 /**
  * date 2020/4/6 10:02 <br/>

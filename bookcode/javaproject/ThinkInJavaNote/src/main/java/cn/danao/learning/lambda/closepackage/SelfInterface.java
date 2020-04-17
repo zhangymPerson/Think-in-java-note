@@ -1,4 +1,4 @@
-package cn.danao.learning.closepackage;
+package cn.danao.learning.lambda.closepackage;
 
 /**
  * date 2020/3/25 18:14 <br/>

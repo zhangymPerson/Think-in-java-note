@@ -1,4 +1,4 @@
-package cn.danao.learning.closepackage;
+package cn.danao.learning.lambda.closepackage;
 
 import lombok.extern.slf4j.Slf4j;
 
