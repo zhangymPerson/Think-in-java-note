@@ -59,10 +59,10 @@ public class FilterTest {
     /**
      * 模拟业务
      *
-     * @param filter
-     * @param personList
+     * @param filter     过滤器
+     * @param personList 过滤内容
      */
-    public void beforeFun(BeforeFilter filter, List<Person> personList) {
+    private void beforeFun(BeforeFilter filter, List<Person> personList) {
         log.info("开始处理");
         //调用过滤器 -> 可以根据接口扩展
         filter.filter(personList);
@@ -71,7 +71,7 @@ public class FilterTest {
         log.info("end");
     }
 
-    public void afterFun(AfterFilter filter, List<Person> personList) {
+    private void afterFun(AfterFilter filter, List<Person> personList) {
         log.info("开始处理");
         //调用过滤器 -> 可以根据接口扩展
         filter.filter(personList);

@@ -16,6 +16,12 @@ import java.util.List;
  */
 public interface BeforeFilter {
 
+    /**
+     * 过滤器
+     *
+     * @param list 需要过滤的值
+     * @return 过滤结果反馈
+     */
     boolean filter(List<Person> list);
 
 }
