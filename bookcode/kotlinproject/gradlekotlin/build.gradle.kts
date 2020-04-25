@@ -52,8 +52,24 @@ task("c", {
 // application 编译应用程序 java/kotlin
 // java 编译Java程序
 // war web项目
+
+
+//插件使用
+//直接 plugins{ pluginName }
+// 官网查询 https://plugins.gradle.org/
 plugins {
-    java
+//    java
+    //Java和kotlin项目使用
+    application
+}
+
+//使用插件
+application {
+//    distributions {
+//        version = 1.0
+//    }
+    
+    mainClassName = "cn.danao.App"
 }
 
 //获取文件名

@@ -1,4 +1,4 @@
-﻿package cn.danao;
+package cn.danao;
 
 /**
  * date 2020/4/25 17:46 <br/>
@@ -10,6 +10,6 @@
  */
 public class App {
     public static void main(String[] args) {
-        System.out.println("test");
+        System.out.println("This Application is run ...");
     }
 }
