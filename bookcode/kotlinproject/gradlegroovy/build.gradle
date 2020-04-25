@@ -1,0 +1,25 @@
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+// ~build.gradle文件中
+
+// 默认情况下,gradle将当前项目下的build.gradle作为默认构建文件
+// task关键字定义一个编译任务, << 表示向helloWorld这个task中插入grovvy代码
+// gradle helloWorld 表示执行这个Task类型的对象,这也是定义一个Task的默认类型
+task helloWorld {
+    println "hello world"
+}
+
+
+task taskB {
+    println("B task")
+    printStr("test")
+}
+
+// ask之间可以存在依赖关系，
+// 比如taskA依赖于taskB，那么在执行taskA时，Gradle会先执行taskB，然后再执行taskA。
+// 声明Task依赖关系的一种方式是在定义一个Task的时候：
+task taskA(dependsOn: taskB) {
+    //do something
+    println("A task")
+}
