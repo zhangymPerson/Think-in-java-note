@@ -6,6 +6,7 @@ import (
 	//即 project/model  
 	//而不是 ./model 或者 model/ 都是错误的
 	"project/model"
+	"project/function"
 	"fmt"
 )
 
@@ -19,4 +20,6 @@ func main()  {
 		Left:&node,
 	}
 	node1.Print()
+	fmt.Println()
+	function.FuncUse()
 }
