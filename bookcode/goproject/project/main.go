@@ -13,13 +13,16 @@ import (
 func main() {
 	fmt.Print("test")
 	node := model.TreeNode{}
-	node.Print()
-	fmt.Println()
+	//node.Print()
+	//fmt.Println()
 	node1 := model.TreeNode{
 		Value: 3,
 		Left:  &node,
 	}
+	//方法的调用 省略取地址符 &
 	node1.Print()
+	//如果是指针，不能省略却地址符号
+	model.Prints(&node1)
 	fmt.Println()
 	function.FuncUse()
 }
