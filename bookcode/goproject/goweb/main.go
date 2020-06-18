@@ -28,6 +28,8 @@ func main() {
 	//自定义返回
 	http.HandleFunc("/get", result.GetInfo)
 
+	//post请求方式
+	http.HandleFunc("/post", result.PostInfo)
 	//注意事项：
 	//端口前面需要加 : 否则报错 listen tcp: address 8080: missing port in address
 	err := http.ListenAndServe(":8080", nil)
