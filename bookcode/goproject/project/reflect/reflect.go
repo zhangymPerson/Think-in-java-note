@@ -22,3 +22,9 @@ func InterfaceToSlice(obj interface{}) []interface{} {
 	}
 	return res
 }
+
+func InterfaceToSliceTwo(obj interface{}) []interface{} {
+	//interface 类型转换 直接 interface obj.(type)
+	//接口对象.(要转换的类型)
+	return obj.([]interface{})
+}
