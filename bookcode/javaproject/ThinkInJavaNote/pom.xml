@@ -53,12 +53,26 @@
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/org.openjdk.jol/jol-core -->
+        <!--对象大小查看工具-->
         <dependency>
             <groupId>org.openjdk.jol</groupId>
             <artifactId>jol-core</artifactId>
             <version>0.10</version>
         </dependency>
 
+        <!-- 性能测试框架-->
+        <dependency>
+            <groupId>org.openjdk.jmh</groupId>
+            <artifactId>jmh-core</artifactId>
+            <version>1.23</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.openjdk.jmh</groupId>
+            <artifactId>jmh-generator-annprocess</artifactId>
+            <version>1.20</version>
+            <scope>provided</scope>
+        </dependency>
     </dependencies>
 
     <build>
