@@ -7,8 +7,9 @@ import lombok.extern.slf4j.Slf4j;
  * description class <br/>
  * 两种创建线程的方式比较
  * <p>
- * 内部到包含同一个引用对象
- *
+ * 内部到包含同一个引用对象  (两种创建线程方式的比较分析)
+ * 如果使用继承类 ，则 TNum对象每个线程单独持有
+ * 如果使用实现接口的方式，则可以多个线程共享一个TNum对象， 就会有多线程共同使用一个变量，造成数据不一致问题
  * @author danao
  * @version 1.0
  * @since 1.0
@@ -47,7 +48,7 @@ public class TwoMethodDiffCompareTwo {
             for (int i = 0; i < 10; i++) {
                 work();
                 tNum.add();
-                log.info("继承Thread类-完成任务[{}]", i);
+                log.info("继承Thread类-完成任务[{}] tNum = [{}]", i,tNum.num);
             }
         }
 
@@ -75,7 +76,7 @@ public class TwoMethodDiffCompareTwo {
             for (int i = 0; i < 10; i++) {
                 work();
                 tNum.add();
-                log.info("实现接口-完成任务[{}]", i);
+                log.info("实现接口-完成任务[{}]，tNum = [{}]", i,tNum.num);
             }
         }
 
