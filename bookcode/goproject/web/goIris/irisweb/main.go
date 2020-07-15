@@ -2,11 +2,16 @@ package main
 
 import (
 	"github.com/kataras/iris"
+	"irisweb/model"
 	"log"
 )
 
 func main() {
 	app := iris.New()
+	app.Handle("GET", "/", func(context iris.Context) {
+		app.Logger().Infof("请求的路由是[%v]", context.Path())
+		context.Next()
+	})
 	//
 	app.Handle("GET", "/contact", func(ctx iris.Context) {
 		//测试输出html
@@ -20,6 +25,7 @@ func main() {
 	})
 	//
 	app.Post("/getParam", func(context iris.Context) {
+		//获取的是 query params
 		app.Logger().Infof("POST-请求路由[%v],请求内容key = [%v]", context.Path(), context.URLParam("key"))
 		context.Text("request Success!")
 	})
@@ -40,7 +46,12 @@ func main() {
 	users.Get("/{id:int}/profile", userProfileHandler)
 	// http://localhost:8080/users/inbox/1
 	users.Get("/inbox/{id:int}", userMessageHandler)
+	//===============================================================
+	app.Post("/json", getJsonInfo)
+	app.Post("/all", getInterface)
+
 	app.Run(iris.Addr(":8080"))
+
 }
 
 func myAuthMiddlewareHandler(ctx iris.Context) {
@@ -59,4 +70,34 @@ func userMessageHandler(ctx iris.Context) {
 	log.Printf("userMessageHandler = 请求路由[%v]", ctx.Path())
 	id := ctx.Params().Get("id")
 	ctx.WriteString(id)
+}
+
+//获取post请求体中的json
+func getJsonInfo(ctx iris.Context) {
+	var c model.Person
+	//http://127.0.0.1:8080/json
+	//Post请求
+	//请求参数
+	//{
+	//    "name":"",
+	//    "age":23
+	//}
+	if err := ctx.ReadJSON(&c); err != nil {
+		ctx.StatusCode(iris.StatusBadRequest)
+		panic(err.Error())
+		ctx.WriteString(err.Error())
+		return
+	}
+	ctx.Writef("Received: %#+v\n", c)
+}
+
+//接收任何json串
+func getInterface(ctx iris.Context) {
+	var reqest interface{}
+	if err := ctx.ReadJSON(&reqest); err != nil {
+		ctx.StatusCode(iris.StatusBadRequest)
+		ctx.WriteString(err.Error())
+		return
+	}
+	ctx.Writef("请求内容是[%#+v]", reqest)
 }
