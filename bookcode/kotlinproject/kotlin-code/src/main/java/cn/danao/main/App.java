@@ -10,6 +10,6 @@ package cn.danao.main;
  */
 public class App {
     public static void main(String[] args) {
-        System.out.println("kotlin - java - 混编代码");
+        System.out.println("java main() -  混编代码");
     }
 }
