@@ -1,0 +1,95 @@
+package cn.danao.main.base
+
+/**
+ *創建對象 并且添加get set 方法
+ */
+class Person {
+    var lastName: String = "zhang"
+        get() = field.toUpperCase()   // 将变量赋值后转换为大写
+        set
+
+    var no: Int = 100
+        get() = field                // 后端变量
+        set(value) {
+            if (value < 10) {       // 如果传入的值小于 10 返回该值
+                field = value
+            } else {
+                field = -1         // 如果传入的值大于等于 10 返回 -1
+            }
+        }
+    var heiht: Float = 145.4f
+        private set
+
+    var children: MutableList<PersonTwoCon> = ArrayList()
+}
+
+/**
+ * 这种定义方式则构造对象时必须传入相关参数
+ */
+class PersonOne(var age: Int, var name: String) {
+    //重写toString()
+    override fun toString(): String {
+        return "age = $age ,name = $name "
+    }
+}
+
+//主构造器
+//主构造器中不能包含任何代码，初始化代码可以放在初始化代码段中，初始化代码段使用 init 关键字作为前缀。
+class PersonMain constructor(firstName: String) {
+    init {
+        println("FirstName is $firstName")
+    }
+}
+
+//次构造函数
+//类也可以有二级构造函数，需要加前缀 constructor:
+class PersonTwoCon {
+    constructor(parent: Person) {
+    }
+}
+
+// 如果类有主构造函数，每个次构造函数都要，或直接或间接通过另一个次构造函数代理主构造函数。
+// 在同一个类中代理另一个构造函数使用 this 关键字：
+class PersonOther(val name: String) {
+    constructor (name: String, age: Int) : this(name) {
+        // 初始化...
+    }
+}
+
+
+//如果一个非抽象类没有声明构造函数(主构造函数或次构造函数)，它会产生一个没有参数的构造函数。
+// 构造函数是 public 。如果你不想你的类有公共的构造函数，你就得声明一个空的主构造函数：
+class DontCreateMe private constructor() {
+}
+
+
+//在 JVM 虚拟机中，如果主构造函数的所有参数都有默认值，编译器会生成一个附加的无参的构造函数，
+// 这个构造函数会直接使用默认值。这使得 Kotlin 可以更简单的使用像 Jackson 或者 JPA 这样使用无参构造函数来创建类实例的库。
+class Customer(val customerName: String = "default")
+
+// 测试
+fun main(args: Array<String>) {
+    var person: Person = Person()
+
+    person.lastName = "wang"
+
+    println("lastName:${person.lastName}")
+
+    person.no = 9
+    println("no:${person.no}")
+
+    person.no = 20
+    println("no:${person.no}")
+
+    var children = person.children
+    children.add(PersonTwoCon(person))
+    println("${person.children}")
+
+    var personOne = PersonOne(1, "zhangsan")
+    personOne.age = 10
+    println("$personOne,${personOne.age}")
+
+
+    var customer = Customer()
+    println("$customer")
+}
