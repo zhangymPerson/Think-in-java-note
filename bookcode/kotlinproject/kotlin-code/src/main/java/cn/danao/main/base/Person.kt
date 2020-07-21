@@ -2,8 +2,13 @@ package cn.danao.main.base
 
 /**
  *創建對象 并且添加get set 方法
+ * open 关键字
+ * 在java中允许创建任意的子类并重写方法任意的方法，除非显示的使用了final关键字进行标注。
+ * 而在kotlin的世界里面则不是这样，在kotlin中它所有的类默认都是final的，那么就意味着不能被继承，
+ * 而且在类中所有的方法也是默认是final的，那么就是kotlin的方法默认也不能被重写。那么想在kotlin中继承父类应该怎么做呢？
+ * 为类增加open，class就可以被继承了
  */
-class Person {
+open class Person {
     var lastName: String = "zhang"
         get() = field.toUpperCase()   // 将变量赋值后转换为大写
         set
@@ -22,6 +27,16 @@ class Person {
 
     var children: MutableList<PersonTwoCon> = ArrayList()
 }
+
+/**
+ * 继承
+ */
+class Son(lastName: String, no: Int) : Person() {
+    override fun toString(): String {
+        return "$lastName,$no,$heiht"
+    }
+}
+
 
 /**
  * 这种定义方式则构造对象时必须传入相关参数
@@ -92,4 +107,9 @@ fun main(args: Array<String>) {
 
     var customer = Customer()
     println("$customer")
+
+    var son = Son("sonName", 1001)
+//    son.heiht = 32.34f
+    println(son)
+
 }
