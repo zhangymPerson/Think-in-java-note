@@ -25,6 +25,8 @@ open class Person {
     var heiht: Float = 145.4f
         private set
 
+    var weight: Double = 100.01
+
     var children: MutableList<PersonTwoCon> = ArrayList()
 }
 
@@ -109,7 +111,7 @@ fun main(args: Array<String>) {
     println("$customer")
 
     var son = Son("sonName", 1001)
-//    son.heiht = 32.34f
+    son.weight = 32.34f.toDouble()
     println(son)
 
 }
