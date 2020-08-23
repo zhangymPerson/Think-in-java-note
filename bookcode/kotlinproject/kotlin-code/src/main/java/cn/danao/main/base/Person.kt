@@ -43,7 +43,7 @@ class Son(lastName: String, no: Int) : Person() {
 /**
  * 这种定义方式则构造对象时必须传入相关参数
  */
-class PersonOne(var age: Int, var name: String) {
+open class PersonOne(var age: Int, var name: String) {
     //重写toString()
     override fun toString(): String {
         return "age = $age ,name = $name "
