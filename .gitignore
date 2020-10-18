@@ -67,3 +67,14 @@ fabric.properties
 
 #ignore pyhon env
 venv
+
+# vscode
+.vscode
+
+# gradle
+.gradle/
+build/
+
+# go
+
+*.sum

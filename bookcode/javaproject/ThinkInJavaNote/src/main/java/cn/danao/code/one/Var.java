@@ -1,5 +1,7 @@
 package cn.danao.code.one;
 
+import lombok.extern.slf4j.Slf4j;
+
 /**
  * date 2020/1/4 10:10 <br/>
  * descriptionclass <br/>
@@ -9,6 +11,7 @@ package cn.danao.code.one;
  * @version 1.0
  * @since 1.0
  */
+@Slf4j
 public class Var {
 
     /**
@@ -40,6 +43,12 @@ public class Var {
         double pi = 3.14159;
         // 声明变量 x 的值是字符 'x'。
         char x = 'x';
+
+        Person p = new Person("p", "p", "p", 32);
+        Person pp = p;
+        //修改的是同一个对象 引用传递  go中的结构体是值拷贝
+        pp.setName("pp");
+        log.info("\np {} \npp {}", p, pp);
     }
 
     public void method() {
