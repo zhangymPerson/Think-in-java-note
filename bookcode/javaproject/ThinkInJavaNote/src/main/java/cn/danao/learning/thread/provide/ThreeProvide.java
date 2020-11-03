@@ -75,8 +75,8 @@ public class ThreeProvide {
      * @param args
      */
     public static void main(String[] args) {
-        oneThread();
-//        moreThread();
+        // oneThread();
+       moreThread();
     }
 
     //单线程的生产消费没有问题
