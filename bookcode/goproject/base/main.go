@@ -26,4 +26,5 @@ func main() {
 	fmt.Println("end")
 	code.TestArrAndSliceOne()
 	code.TestArrAndSliceTwo()
+	fmt.Println("测试")
 }

@@ -30,4 +30,11 @@ func main() {
 	function.FuncUse()
 	//调用命令行测试
 	argutil.Args()
+	p := model.Person{
+		Name : "zhangsan",
+		Age:23,
+	}
+	var name string = p.GetName()
+	fmt.Println(name)
+
 }
