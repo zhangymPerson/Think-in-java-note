@@ -1,5 +1,7 @@
 package cn.danao.main.base
 
+import cn.danao.main.base.bean.Person
+import org.junit.Test
 import kotlin.random.Random
 
 class BaseType {
@@ -40,12 +42,42 @@ class BaseType {
         println("s=${s} toInt = ${toInt}")
     }
 
+    /**
+     * 类型检测与类型转换
+     * is !is
+     * as
+     */
+    @Test
+    fun typeTest() {
+        var person: Any = Person("", 10)
+        //不确定类型可以用is ,确定类型不能用is
+        if (person is String) {
+            println("${person} 是字符串")
+        } else {
+            println("${person} 不是字符串")
+        }
+        //安全的类型转换  as?
+        var strC = person as? String
+        println("${strC}")
+        //不安全的类型转换
+        var str: String = person as String
+        println("${str}")
+        var strA = person as String
+        var strB = person as String?
+    }
+
+    @Test
+    fun equalsTest() {
+        var p = Person("张三", 15)
+        var p1 = Person("张三", 15)
+        println("p==p1 -> ${p == p1}")
+    }
 }
 
 
-
-fun main() {
-//    BaseType().testOne()
-//    BaseType().testTwo()
-    BaseType().str()
-}
+//fun main() {
+//    var baseType = BaseType()
+//    baseType.testOne()
+//    baseType.testTwo()
+//    baseType.str()
+//}

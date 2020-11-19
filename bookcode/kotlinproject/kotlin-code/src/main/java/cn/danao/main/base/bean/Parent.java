@@ -1,4 +1,4 @@
-package cn.danao.main.base;
+package cn.danao.main.base.bean;
 
 /**
  * date 2020/8/23 14:17 <br/>
