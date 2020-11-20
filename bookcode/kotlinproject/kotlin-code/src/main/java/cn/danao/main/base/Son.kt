@@ -1,5 +1,7 @@
 package cn.danao.main.base
 
+import cn.danao.main.base.bean.Parent
+
 
 open class kotlinSon(var sonName: String, var ages: Int) : Parent() {
     override fun toString(): String {

@@ -1,5 +1,6 @@
 package cn.danao.main.base;
 
+import cn.danao.main.base.bean.PersonOne;
 import org.jetbrains.annotations.NotNull;
 
 /**

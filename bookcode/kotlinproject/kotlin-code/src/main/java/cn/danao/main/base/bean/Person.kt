@@ -1,4 +1,4 @@
-package cn.danao.main.base
+package cn.danao.main.base.bean
 
 /**
  *創建對象 并且添加get set 方法
@@ -8,7 +8,7 @@ package cn.danao.main.base
  * 而且在类中所有的方法也是默认是final的，那么就是kotlin的方法默认也不能被重写。那么想在kotlin中继承父类应该怎么做呢？
  * 为类增加open，class就可以被继承了
  */
-open class Person {
+open class Person(var name: String, var age: Int) {
     var lastName: String = "zhang"
         get() = field.toUpperCase()   // 将变量赋值后转换为大写
         set
@@ -28,12 +28,32 @@ open class Person {
     var weight: Double = 100.01
 
     var children: MutableList<PersonTwoCon> = ArrayList()
+
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (javaClass != other?.javaClass) return false
+
+        other as Person
+
+        if (name != other.name) return false
+        if (age != other.age) return false
+
+        return true
+    }
+
+    override fun hashCode(): Int {
+        var result = name.hashCode()
+        result = 31 * result + age
+        return result
+    }
+
+
 }
 
 /**
  * 继承
  */
-class Son(lastName: String, no: Int) : Person() {
+class Son(lastName: String, no: Int) : Person("", 0) {
     override fun toString(): String {
         return "$lastName,$no,$heiht"
     }
@@ -86,7 +106,7 @@ class Customer(val customerName: String = "default")
 
 // 测试
 fun main(args: Array<String>) {
-    var person: Person = Person()
+    var person: Person = Person("", 0)
 
     person.lastName = "wang"
 
