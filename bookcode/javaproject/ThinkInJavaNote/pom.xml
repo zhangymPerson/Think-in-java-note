@@ -73,6 +73,13 @@
             <version>1.20</version>
             <scope>provided</scope>
         </dependency>
+
+        <!--netty 测试 -->
+        <dependency>
+            <groupId>io.netty</groupId>
+            <artifactId>netty-all</artifactId>
+            <version>5.0.0.Alpha1</version>
+        </dependency>
     </dependencies>
 
     <build>

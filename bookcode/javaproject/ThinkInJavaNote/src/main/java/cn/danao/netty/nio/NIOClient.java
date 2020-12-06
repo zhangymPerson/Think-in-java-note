@@ -16,6 +16,8 @@ import java.util.concurrent.Executors;
 /**
  * date 2020/12/4 17:09 <br/>
  * description class <br/>
+ * NIO 有三大核心部分：
+ * Channel(通道)，Buffer(缓冲区), Selector(选择器)
  *
  * @author danao
  * @version 1.0
@@ -24,6 +26,7 @@ import java.util.concurrent.Executors;
 public class NIOClient {
     public static void main(String[] args) throws IOException {
         try {
+            //NIO的核心 Channel 通道 Buffer 缓存
             SocketChannel socketChannel = SocketChannel.open();
             socketChannel.configureBlocking(false);
             Selector selector = Selector.open();
