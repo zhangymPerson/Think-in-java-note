@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"goweb/result"
+	"goweb/controller"
 	"io"
 	"log"
 	"net/http"
@@ -26,10 +26,10 @@ func main() {
 	http.HandleFunc("/hi", Hi)
 
 	//自定义返回
-	http.HandleFunc("/get", result.GetInfo)
+	http.HandleFunc("/get", controller.GetInfo)
 
 	//post请求方式
-	http.HandleFunc("/post", result.PostInfo)
+	http.HandleFunc("/post", controller.PostInfo)
 	//注意事项：
 	//端口前面需要加 : 否则报错 listen tcp: address 8080: missing port in address
 	err := http.ListenAndServe(":8080", nil)

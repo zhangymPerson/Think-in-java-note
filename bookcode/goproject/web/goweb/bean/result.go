@@ -1,4 +1,4 @@
-package result
+package bean
 
 import (
 	"encoding/json"
@@ -32,5 +32,13 @@ func (r *Result) ToJson() string {
 			return "r is null and error not change json"
 		}
 		return string(json)
+	}
+}
+
+func GetSuccessResult(data interface{}) Result {
+	return Result{
+		Code:   200,
+		Msg:    "success",
+		Result: data,
 	}
 }
