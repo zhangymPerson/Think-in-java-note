@@ -5,14 +5,14 @@ import (
 	"log"
 )
 
-//统一错误返回格式
+//Result 统一错误返回格式
 type Result struct {
 	Code   int         `json:"code"`
 	Msg    string      `json:"msg"`
 	Result interface{} `json:"result"`
 }
 
-//错误返回json字符串
+//ToJson 错误返回json字符串
 func (r *Result) ToJson() string {
 	if r != nil {
 		json, err := json.Marshal(r)

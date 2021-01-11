@@ -17,10 +17,12 @@ var db *sql.DB
 //读取配置文件
 func readIni() (username, password, host, database string, err error) {
 	//读取配置文件
-	file, error := os.Open("db.ini")
+	str, _ := os.Getwd()
+	fmt.Printf("配置文件的路径是:%v\n", str)
+	file, error := os.Open("./common/db.ini")
 	if error != nil {
 		err = error
-		return
+		panic(err.Error())
 	}
 	defer file.Close()
 	//按行读取配置文件
@@ -94,7 +96,7 @@ func CloseDB() {
 }
 
 //封装增、删、改、查
-//查询返回一条数据
+//QueryRow 查询返回一条数据
 func QueryRow(sqlstr string, args ...interface{}) (rest []interface{}) {
 	db := GetDB()
 	if db == nil {
@@ -103,8 +105,14 @@ func QueryRow(sqlstr string, args ...interface{}) (rest []interface{}) {
 	}
 
 	//生成SQL预编译
-	stmt, _ := db.Prepare(sqlstr)
-	rows, _ := stmt.Query(args...)
+	stmt, err := db.Prepare(sqlstr)
+	if err != nil {
+		panic(err)
+	}
+	rows, err := stmt.Query(args...)
+	if err != nil {
+		panic(err)
+	}
 	if rows.Next() {
 		//得到返回列数
 		cols, _ := rows.Columns()
@@ -124,7 +132,7 @@ func QueryRow(sqlstr string, args ...interface{}) (rest []interface{}) {
 	return
 }
 
-//查询多行多列数据
+//Query查询多行多列数据
 func Query(sqlstr string, args ...interface{}) (rest [][]interface{}) {
 	db := GetDB()
 	if db == nil {
@@ -161,13 +169,13 @@ func Query(sqlstr string, args ...interface{}) (rest [][]interface{}) {
 	return
 }
 
-//返回首行首列
+// QueryUnique 返回首行首列
 func QueryUnique(sql string, args ...interface{}) (dest interface{}) {
 	dest = QueryRow(sql, args...)[0]
 	return
 }
 
-//返回统计
+//QueryCount返回统计
 func QueryCount(sql string, args ...interface{}) (count int64) {
 	result := QueryUnique(sql, args...)
 	if v, ok := result.(int64); ok {
@@ -176,7 +184,7 @@ func QueryCount(sql string, args ...interface{}) (count int64) {
 	return
 }
 
-//执行数据操作
+//execute执行数据操作
 func execute(sql string, args ...interface{}) (result sql.Result) {
 	db := GetDB()
 	if db == nil {
