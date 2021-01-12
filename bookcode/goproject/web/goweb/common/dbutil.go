@@ -19,6 +19,7 @@ func readIni() (username, password, host, database string, err error) {
 	//读取配置文件
 	str, _ := os.Getwd()
 	fmt.Printf("配置文件的路径是:%v\n", str)
+	//Open()和命令执行所在位置有关系
 	file, error := os.Open("./common/db.ini")
 	if error != nil {
 		err = error
@@ -57,7 +58,7 @@ func readIni() (username, password, host, database string, err error) {
 	return
 }
 
-//获取数据库
+//GetDB 获取数据库
 func GetDB() *sql.DB {
 	if db == nil {
 		db = connDB()
@@ -88,15 +89,15 @@ func connDB() (db *sql.DB) {
 	return
 }
 
-//关闭数据库
+//CloseDB is 关闭数据库
 func CloseDB() {
 	if db != nil {
 		db.Close()
 	}
 }
 
-//封装增、删、改、查
 //QueryRow 查询返回一条数据
+//封装增、删、改、查
 func QueryRow(sqlstr string, args ...interface{}) (rest []interface{}) {
 	db := GetDB()
 	if db == nil {
@@ -132,7 +133,7 @@ func QueryRow(sqlstr string, args ...interface{}) (rest []interface{}) {
 	return
 }
 
-//Query查询多行多列数据
+//Query 查询多行多列数据
 func Query(sqlstr string, args ...interface{}) (rest [][]interface{}) {
 	db := GetDB()
 	if db == nil {
@@ -169,13 +170,27 @@ func Query(sqlstr string, args ...interface{}) (rest [][]interface{}) {
 	return
 }
 
+//QueryRows 查询多行多列数据
+func QueryRows(sqlstr string, args ...interface{}) (rows *sql.Rows) {
+	db := GetDB()
+	if db == nil {
+		fmt.Println("Query 失败")
+		return
+	}
+
+	//生成SQL预编译
+	stmt, _ := db.Prepare(sqlstr)
+	rows, _ = stmt.Query(args...)
+	return
+}
+
 // QueryUnique 返回首行首列
 func QueryUnique(sql string, args ...interface{}) (dest interface{}) {
 	dest = QueryRow(sql, args...)[0]
 	return
 }
 
-//QueryCount返回统计
+//QueryCount 返回统计
 func QueryCount(sql string, args ...interface{}) (count int64) {
 	result := QueryUnique(sql, args...)
 	if v, ok := result.(int64); ok {
@@ -184,7 +199,7 @@ func QueryCount(sql string, args ...interface{}) (count int64) {
 	return
 }
 
-//execute执行数据操作
+//execute 执行数据操作
 func execute(sql string, args ...interface{}) (result sql.Result) {
 	db := GetDB()
 	if db == nil {
@@ -199,7 +214,7 @@ func execute(sql string, args ...interface{}) (result sql.Result) {
 	return
 }
 
-//执行插入数据
+//Insert 执行插入数据
 func Insert(sql string, args ...interface{}) (result int64) {
 	res := execute(sql, args...)
 	if res == nil {
@@ -210,7 +225,7 @@ func Insert(sql string, args ...interface{}) (result int64) {
 	return
 }
 
-//执行删除操作
+//Delete 执行删除操作
 func Delete(sql string, args ...interface{}) (result int64) {
 	res := execute(sql, args...)
 	if res == nil {
@@ -221,7 +236,7 @@ func Delete(sql string, args ...interface{}) (result int64) {
 	return
 }
 
-//执行更新操作
+//Update 执行更新操作
 func Update(sql string, args ...interface{}) (result int64) {
 	res := execute(sql, args...)
 	if res == nil {

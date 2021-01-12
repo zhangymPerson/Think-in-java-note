@@ -15,7 +15,7 @@ func GetUserFromId(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		fmt.Errorf(err.Error())
 	}
-	id := dao.SelectById(int64(atoi))
+	id := dao.SelectByIdTwo(int64(atoi))
 	marshal, err := json.Marshal(&id)
 	if err != nil {
 		fmt.Errorf(err.Error())
