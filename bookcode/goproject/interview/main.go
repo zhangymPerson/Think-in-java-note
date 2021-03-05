@@ -7,5 +7,6 @@ func main() {
 	// question.Two()
 	// question.SliceOne()
 	// question.SliceTwo()
-	question.SliceTest()
+	// question.IotaTest()
+	question.MethodArgTest()
 }
