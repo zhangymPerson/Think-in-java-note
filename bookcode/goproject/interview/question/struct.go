@@ -26,6 +26,15 @@ func StructTest() {
 		age  int
 		name string
 	}{age: 11, name: "qq"}
+
+	var name string
+	name = sn1.name
+	name = (&sn1).name
+	// name = (*sn1).name
+	// name:=sn1->name
+	fmt.Println(name)
+
+
 	sn2 := struct {
 		age  int
 		name string
