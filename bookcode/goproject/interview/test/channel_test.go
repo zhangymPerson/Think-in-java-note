@@ -1,4 +1,4 @@
-package main
+package test
 
 // 测试 channel 相关api
 

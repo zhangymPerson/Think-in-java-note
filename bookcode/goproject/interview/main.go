@@ -1,12 +1,26 @@
 package main
 
-import "interview/question"
+import (
+	"interview/question"
+	"interview/test"
+)
 
 func main() {
-	// question.DeferCall()
-	// question.Two()
-	// question.SliceOne()
-	// question.SliceTwo()
-	// question.IotaTest()
+	divisionZeroTask()
+}
+
+func divisionZeroTask() {
+	//test.DivisionOne()
+	//test.DivisionTwo()
+	//test.DivisionThree()
+	test.DivisionFore()
+}
+
+func questionTask() {
+	question.DeferCall()
+	question.Two()
+	question.SliceOne()
+	question.SliceTwo()
+	question.IotaTest()
 	question.MethodArgTest()
 }
