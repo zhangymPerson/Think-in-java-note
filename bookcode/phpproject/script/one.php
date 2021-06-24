@@ -1,4 +1,7 @@
 <?php
+// Show all errors
+//打印所有错误日志
+error_reporting(E_ALL);
 //编写测试代码
 print("hello word\n");
 // () 对于echo和print是可选的
