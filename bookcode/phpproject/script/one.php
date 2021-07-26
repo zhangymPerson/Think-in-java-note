@@ -35,10 +35,10 @@ $float = 1.2e3;
 $float = 7E-10;
 
 // 算数运算
-$sum        = 1 + 1; // 2
+$sum = 1 + 1; // 2
 $difference = 2 - 1; // 1
-$product    = 2 * 2; // 4
-$quotient   = 2 / 1; // 2
+$product = 2 * 2; // 4
+$quotient = 2 / 1; // 2
 
 // 算数运算的简写
 $number = 0;
@@ -54,7 +54,7 @@ $sgl_quotes = '$String'; // => '$String'
 $dbl_quotes = "This is a $sgl_quotes."; // => 'This is a $String.'
 
 // 特殊字符只有在双引号中有用
-$escaped   = "This contains a \t tab character.";
+$escaped = "This contains a \t tab character.";
 $unescaped = 'This just contains a slash and a t: \t';
 
 // 可以把变量包含在一对大括号中
@@ -121,9 +121,31 @@ echo assert($c === $d);
 echo assert($a !== $d);
 // echo assert(1 === '1');
 echo assert(1 !== '1');
+echo PHP_EOL;
 
 //json
 $arr = array('a' => 1, 'b' => 2, 'c' => 3, 'd' => 4, 'e' => 5);
+$aStr = $arr["a"];
+$bStr = $arr["b"];
+echo $bStr . PHP_EOL;
+echo $aStr . PHP_EOL;
+
+for ($x = 0; $x < count($arr); $x++) {
+    echo "arr = " . $arr[$x] . PHP_EOL;
+}
+
+
+$csName = array("Linux", "PHP", "MySQL", "HTML", "CSS", "JQuery");
+//  方式一：for循环遍历
+
+for ($i = 0; $i < count($csName); $i++) {
+    echo $csName[$i] . PHP_EOL;
+}
 echo json_encode($arr);
+echo PHP_EOL;
+//关联数组
+$age = array("Bill" => "63", "Steve" => "56", "Elon" => "47");
 
-
+foreach ($age as $x => $x_value) {
+    echo "Key=" . $x . ", Value=" . $x_value . PHP_EOL;
+}
