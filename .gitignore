@@ -78,3 +78,8 @@ build/
 # go
 
 *.sum
+
+# mac
+.DS_store
+# history 插件生成的本地缓存文件
+.history
