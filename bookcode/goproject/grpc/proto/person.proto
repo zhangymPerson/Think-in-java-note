@@ -1,0 +1,12 @@
+syntax = "proto3";
+option go_package = "/pb";
+
+import "address.proto";
+
+message Person{
+    string name = 1;
+    string sex = 2;
+    uint32 age =3;
+    double money = 4;
+    Address address = 5;
+}

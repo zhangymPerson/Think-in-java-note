@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+option go_package="/pb";
+
+message Response{
+    // 错误码枚举
+    enum ErrorCode{
+        NUKONW = 0;
+        SUCCESS = 1;
+        ERROR = 2;
+    };
+
+    string data = 1;
+    string message = 2;
+
+}
