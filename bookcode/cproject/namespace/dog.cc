@@ -4,7 +4,8 @@ namespace bean
 {
 
     // void Dog() = default;
-    void Dog()
+    //构造函数和析构函数 不能有返回值 报错
+    Dog::Dog()
     {
         std::cout << "A dog has been constructed\n";
     }
