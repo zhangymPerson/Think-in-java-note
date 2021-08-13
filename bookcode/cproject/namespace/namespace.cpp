@@ -37,6 +37,7 @@ void foo()
 using namespace Second;
 #include "one.h"
 #include "two.h"
+#include "dog.h"
 int main()
 {
     // 如果没有特别指定，就从“Second”中取得所需的内容。
@@ -47,4 +48,15 @@ int main()
     using namespace two;
     fun();
     one::fun();
+    // bean::Dog myDog; // 此时显示“A dog has been constructed”
+    //error : g++ *.o -o namespace
+    // Undefined symbols for architecture arm64:
+    // "bean::Dog::Dog()", referenced from:
+    // _main in namespace.o
+    // ld: symbol(s) not found for architecture arm64
+    // clang: error: linker command failed with exit code 1 (use -v to see invocation)
+    // myDog.setName("Barkley");
+    // myDog.setWeight(10);
+    // myDog.print(); // 显示“Dog is Barkley and weighs 10 kg”
+    return 0;
 }
