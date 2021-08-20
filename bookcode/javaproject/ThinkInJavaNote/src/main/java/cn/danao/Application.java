@@ -1,5 +1,8 @@
 package cn.danao;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * @author danao
  * @version 1.0
@@ -20,6 +23,15 @@ public class Application {
 
     public static void run(String[] args){
         //todo 业务
+        List<String> list = new ArrayList<>();
+        list.add("a");
+        list.add("b");
+        list.add("c");
+        list.add("d");
+        list.add("e");
+        for (String k : list) {
+            System.out.println(k);
+        }
 
     }
 
