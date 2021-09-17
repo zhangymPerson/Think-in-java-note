@@ -1,0 +1,20 @@
+{
+    "commands": [
+        {
+            "id": 1,
+            "command": "ls",
+            "args": [
+                "-la"
+            ],
+            "info": "查看命令"
+        },
+        {
+            "id": 2,
+            "command": "go",
+            "args": [
+                "version"
+            ],
+            "info": "查看go版本"
+        }
+    ]
+}

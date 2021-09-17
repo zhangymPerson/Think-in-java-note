@@ -1,0 +1,11 @@
+# 命令1
+ll
+
+# 命令2
+ls
+
+#命令3
+go version
+
+#命令4 
+history |grep "go"
