@@ -7,3 +7,11 @@
   `go mod init shhelp`
 
 - 编写代码
+
+- 构建方式
+
+  `go build -o shhelp`
+
+  然后配置到 PATH 下
+
+
