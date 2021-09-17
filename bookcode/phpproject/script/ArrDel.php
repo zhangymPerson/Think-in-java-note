@@ -10,10 +10,10 @@ $brr = array(
 
 foreach ($brr as $key => &$value) {
     var_dump($key . '=' . $value);
-    if($value == "2") {
+    if ($value == "2") {
         unset($brr[$key]);
     }
     $value['a'] = "b";
-//    $arrOne['a'] = "b";
+    //    $arrOne['a'] = "b";
 }
 echo json_encode($brr);

@@ -5,8 +5,7 @@
  */
 
 // 通过"function"定义函数:
-function my_function()
-{
+function my_function() {
     return 'Hello';
 }
 
@@ -15,8 +14,7 @@ echo my_function() . PHP_EOL;
 // 函数名需要以字母或者下划线开头, 
 // 后面可以跟着任意的字母、下划线、数字.
 
-function add($x, $y = 1)
-{ // $y 是可选参数，默认值为 1
+function add($x, $y = 1) { // $y 是可选参数，默认值为 1
     $result = $x + $y;
     return $result;
 }
@@ -37,14 +35,12 @@ $inc = function ($x) {
 
 echo $inc(2) . PHP_EOL; // => 3
 
-function foo($x, $y, $z)
-{
+function foo($x, $y, $z) {
     echo "$x - $y - $z";
 }
 
 // 函数也可以返回一个函数
-function bar($x, $y)
-{
+function bar($x, $y) {
     // 用 'use' 将外部的参数引入到里面
     return function ($z) use ($x, $y) {
         foo($x, $y, $z);
@@ -54,7 +50,7 @@ function bar($x, $y)
 $bar = bar('A', 'B');
 echo gettype($bar) . PHP_EOL;
 // 输出 "A - B - C"
-$bar('C'); 
+$bar('C');
 
 // 你也可以通过字符串调用函数
 $function_name = 'add';

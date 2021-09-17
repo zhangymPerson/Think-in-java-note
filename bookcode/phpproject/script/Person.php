@@ -1,7 +1,6 @@
 <?php
 
-class Person
-{
+class Person {
     const VALUE      = 'value'; // 常量
 
     static $staticVar   = 'static';
@@ -13,24 +12,20 @@ class Person
     private $priv   = 'private';   // 仅当前类可访问
 
     // 通过 __construct 来定义构造函数
-    public function __construct($name)
-    {
+    public function __construct($name) {
         // 通过 $this 访问当前对象
         $this->name = $name;
     }
 
     // 方法就是类中定义的函数
-    public function myMethod()
-    {
+    public function myMethod() {
         print 'MyClass';
     }
 
-    final function youCannotOverrideMe()
-    {
+    final function youCannotOverrideMe() {
     }
 
-    public static function myStaticMethod()
-    {
+    public static function myStaticMethod() {
         print 'I am static';
     }
 }
