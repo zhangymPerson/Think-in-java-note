@@ -49,7 +49,7 @@ func FileChange(dir string) bool {
 					// fmt.Printf("文件 [%s] 进行了 [%s] 操作\n", name, event.Op)
 					changInfo := getFileLastInfo(name)
 					//此处打印最后一行内容，可根据具体文件内容进行扩展
-					fmt.Printf(changInfo)
+					analysisLog(changInfo)
 				}
 			case err, ok := <-watcher.Errors:
 				if !ok {
@@ -68,6 +68,7 @@ func FileChange(dir string) bool {
 	return true
 }
 
+// getFileLastInfo获取指定文件的最后一行数据
 func getFileLastInfo(file string) string {
 	// 查看指定文件的最后一行内容
 	shell := fmt.Sprintf("cat %s | sed -n '$P'", file)
@@ -80,4 +81,10 @@ func getFileLastInfo(file string) string {
 	}
 	// fmt.Printf("文件 [%s] 最后一行改动为: [%s] \n", file, string(b))
 	return string(b)
+}
+
+// analysisLog 分析最后一行日志的内容
+func analysisLog(log string) {
+	//此处只打印，可自定义扩展
+	fmt.Printf(log)
 }
