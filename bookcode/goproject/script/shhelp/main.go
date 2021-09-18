@@ -32,7 +32,7 @@ func main() {
 	fmt.Println("start server")
 	// fmt.Println("命令行的参数有", len(os.Args))
 	// &user 就是接收命令行中输入 -u 后面的参数值，其他同理
-	flag.Int64Var(&num, "i", 0, "命令id")
+	flag.Int64Var(&num, "id", 0, "命令id")
 	var fileInfo string = `json配置文件位置，格式如下：
 {
 	"commands": [
