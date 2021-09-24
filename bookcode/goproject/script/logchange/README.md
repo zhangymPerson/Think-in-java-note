@@ -10,3 +10,5 @@
 - 创建 `go mod init logchange`
 - 开发 main.go
 - 调试的话，打开对应的`fmt.Println()`相关语句
+
+- 使用 flag 库进行开发
