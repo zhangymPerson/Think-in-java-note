@@ -1,6 +1,7 @@
 <?php
 
 $arr = array('1', '2', '3');
+
 $brr = array(
     'a' => '1',
     'b' => '2',
@@ -8,12 +9,22 @@ $brr = array(
     'd' => array("aaa" => "ccc", "bbb" => "ddd"),
 );
 
+
 foreach ($brr as $key => &$value) {
-    var_dump($key . '=' . $value);
     if ($value == "2") {
         unset($brr[$key]);
     }
-    $value['a'] = "b";
-    //    $arrOne['a'] = "b";
 }
-echo json_encode($brr);
+
+// echo json_encode($brr);
+
+
+function arrAdd() {
+    $arr = array('one', "two", "three", "fore");
+    echo json_encode($arr);
+    //php添加元素
+    $arr[] = "five";
+    echo json_encode($arr);
+}
+
+arrAdd();
