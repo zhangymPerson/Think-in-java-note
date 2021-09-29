@@ -25,15 +25,34 @@ def list_method():
     """
     # 列表
     names = ["zhangsna", "lisi", "wangwu", "zhaoliu"]
-    attrs = list()
     # 当成list添加
     names.append(["append1", "append2"])
     # 追加list中每个元素
     names.extend(["extend1", "extend2"])
-    print(names)
-    # 无序的集合对象 s = {"a","b"} s = set({"a","b"})
+    names.append(None)
+    names.append({"a", "b", "c"})
+    names.insert(-1, "aaaaaaaaaaaaa")
+    print("names = %s" % (names))
+
+    # list 测试
+    attrs = list()
+    attrs.append("a")
+    attrs.append(0)
+    attrs.append(None)
+    attrs.append(names)
+    attrs.append("")
+    print("attrs = %s" % (attrs))
+
+    """
+    python中的无序集合
+    """
+    # 无序的集合对象
+    s = {"a", "b", "a", "b", "c"}
+    print("s = %s" % (s))
+    s = set({"a", "b", "a", "b", "c"})
+    print("s = %s" % (s))
     s = {"a", "a", "b", "c"}
-    print(s)
+    print("s = %s" % (s))
 
 
 def map_method():
@@ -65,7 +84,7 @@ def map_method():
     print(name_map)
     # 遍历
     for m in name_map:
-        print("遍历:%s" % {m, name_map[m]});
+        print("遍历:%s" % {m, name_map[m]})
     # 列表中存储字典，列表中存储多个字典
     name_list = [{"name": "beijing", "adCode": 110100}, {"name": "tianjing", "adCode": 234000},
                  {"name": "shanghai", "adCode": 45600}]

@@ -149,3 +149,8 @@ $age = array("Bill" => "63", "Steve" => "56", "Elon" => "47");
 foreach ($age as $x => $x_value) {
     echo "Key=" . $x . ", Value=" . $x_value . PHP_EOL;
 }
+
+
+//php 时间格式化
+$date = date('Y-m-d H:i:s', time());
+print($date);

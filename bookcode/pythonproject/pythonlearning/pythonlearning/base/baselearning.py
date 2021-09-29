@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 # python 基础语法笔记
 
 def choose_method(a, b):
@@ -20,6 +21,18 @@ def choose_method(a, b):
         print("%d<%d" % (a, 0))
     else:
         print("%d=%d" % (a, 0))
+
+
+def boolTest():
+    a = True
+    b = False
+    if a:
+        print("a is true")
+    else:
+        print("a is true")
+
+    # bool(1-var) python 取反
+    print("b取反=%s" % (bool(1-b)))
 
 
 def loop_method():
@@ -57,3 +70,4 @@ if __name__ == '__main__':
     print("基础语法")
     choose_method(-12, 14)
     str_method()
+    boolTest()
