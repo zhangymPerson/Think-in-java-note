@@ -24,12 +24,34 @@ class DB():
         self.conn.close()
 
 
+def queryTest(db):
+    """
+    查数据
+    """
+    # 游标执行返回的是数量
+    count = db.execute("select * from EMPLOYEE")
+    print("count is %s" % (count))
+    # 需要调用 fetchall() 函数获取结果
+    results = db.fetchall()
+    for row in results:
+        print("row is %s" % (row))
+
+
+def getTable(db):
+    """
+    获取表结构
+    """
+    tableName = "EMPLOYEE"
+    sql = "show create table %s" % (tableName)
+    count = db.execute(sql)
+    print("count is %s" % (count))
+    # 需要调用 fetchall() 函数获取结果
+    results = db.fetchall()
+    for row in results:
+        print("row is %s" % (row))
+
+
 if __name__ == '__main__':
     with DB(host='127.0.0.1', user='root', passwd='123456', db='test') as db:
-        db.execute('select * from user')
-        for i in db:
-            print(i)
-        db.execute("select * from EMPLOYEE")
-        for i in db:
-            print(i)
-        db.execute
+        queryTest(db=db)
+        getTable(db=db)
