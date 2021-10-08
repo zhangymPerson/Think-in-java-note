@@ -1,0 +1,3 @@
+测试读取内容
+a b c d
+aa   bb   cc   dd

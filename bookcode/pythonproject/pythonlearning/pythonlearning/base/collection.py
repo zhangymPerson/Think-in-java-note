@@ -67,6 +67,18 @@ def map_method():
     print(name_map)
     # 查询
     print(name_map["name"])
+    # 是否存在
+    if 'name' in name_map:
+        print("key = name 存在")
+    else:
+        print("key = name 不存在")
+    # not in
+    # 检测键 Age 是否存在
+    if 'Age' not in name_map:
+        print("键 Age 不存在")
+    else:
+        print("键 Age 存在")
+
     # 修改
     name_map["age"] = 19
     print(name_map)
