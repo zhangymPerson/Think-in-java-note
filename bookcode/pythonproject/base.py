@@ -36,7 +36,13 @@ def run():
     :return:
     """
     # 自定义输入
-    text = input("要输入的内容是：")
+    text = input("you input:")
+    # 如果要自定义输入中文
+    # 则部分环境下要先处理字符编码问题
+    info = "要输入的字符串是："
+    # python 字符串转码的方式
+    r_info = "要输入的字符串是：".encode('utf-8').decode('latin1')
+    print(("原中文内容[%s],转编码后[%s]") % (info, r_info))
     logging.info("你输入的内容是[%s]" % (text))
     logging.info("自定义实现")
 
