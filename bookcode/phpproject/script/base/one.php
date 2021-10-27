@@ -11,7 +11,6 @@ echo "World\n"; // 输出 "World" 并且换行
 echo PHP_EOL;
 echo PHP_EOL;
 
-
 /************************************
  * 类型与变量
  */
@@ -96,7 +95,6 @@ echo $associative['One'] . PHP_EOL; // 输出 1
 $array = ['One', 'Two', 'Three'];
 echo $array[0] . PHP_EOL; // => "One"
 
-
 /********************************
  * 逻辑
  */
@@ -134,10 +132,9 @@ for ($x = 0; $x < count($arr); $x++) {
     echo "arr = " . $arr[$x] . PHP_EOL;
 }
 
-
 $csName = array("Linux", "PHP", "MySQL", "HTML", "CSS", "JQuery");
-//  方式一：for循环遍历
 
+//  方式一：for循环遍历
 for ($i = 0; $i < count($csName); $i++) {
     echo $csName[$i] . PHP_EOL;
 }
@@ -150,7 +147,13 @@ foreach ($age as $x => $x_value) {
     echo "Key=" . $x . ", Value=" . $x_value . PHP_EOL;
 }
 
-
 //php 时间格式化
 $date = date('Y-m-d H:i:s', time());
-print($date);
+echo $date . PHP_EOL;
+
+$num = 0;
+if (empty($num)) {
+    echo "0 is empty" . PHP_EOL;
+} else {
+    echo "0 is noEmpty" . PHP_EOL;
+}
