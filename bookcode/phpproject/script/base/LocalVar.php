@@ -34,3 +34,8 @@ test();
 echo
 $t =  new Test;
 $t->test();
+
+
+// php 常用的判断变量的函数有
+// 类型判断
+// gettype()、is_array()、is_bool()、is_float()、is_integer()、is_null()、is_numeric()、is_object()、is_resource()、is_scalar() 和 is_string()
