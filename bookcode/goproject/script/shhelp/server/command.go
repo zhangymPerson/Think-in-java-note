@@ -13,12 +13,12 @@ import (
 var defaultConfFile = ".shhelp.json"
 var file = Home() + "/" + defaultConfFile
 
-var commamds Commands
+var commands Commands
 
 func init() {
     // 初始化配置文件
     initConf()
-    commamds = GetCommands()
+    commands = GetCommands()
 }
 
 // Command command参数
@@ -66,22 +66,22 @@ func AddCommand(comm string) {
         Command: comm,
     }
     // 去重
-    if len(commamds.Commands) == 0 {
+    if len(commands.Commands) == 0 {
         command.Id = 1
-        commamds.Commands = append(commamds.Commands, command)
+        commands.Commands = append(commands.Commands, command)
     } else {
         var bool = false
-        for _, v := range commamds.Commands {
+        for _, v := range commands.Commands {
             if v.Command == comm {
                 bool = true
             }
         }
         if !bool {
             command.Id = maxId() + 1
-            commamds.Commands = append(commamds.Commands, command)
+            commands.Commands = append(commands.Commands, command)
         }
     }
-    data, _ := json.Marshal(commamds)
+    data, _ := json.Marshal(commands)
     ioutil.WriteFile(file, data, 066)
 }
 
@@ -97,6 +97,21 @@ func ListCommand(comm Commands) string {
         res += fmt.Sprintf("command id= %d info = %s,command = [%s]\n", v.Id, v.Info, command)
     }
     return res
+}
+
+//删除一个command
+func DeleteCommand(comm int) {
+    command := ""
+    for i := 0; i < len(commands.Commands); i++ {
+        if commands.Commands[i].Id == comm {
+            command = commands.Commands[i].Command
+            commands.Commands = append(commands.Commands[:i], commands.Commands[i+1:]...)
+            i--
+        }
+    }
+    fmt.Printf("del command [%s] success", command)
+    data, _ := json.Marshal(commands)
+    ioutil.WriteFile(file, data, 066)
 }
 
 // execCommand 执行单个命令
@@ -133,7 +148,7 @@ func ExecComm(command string) (string, error) {
 
 //根据id执行命令
 func ExecCommandFromId(id int) {
-    for _, c := range commamds.Commands {
+    for _, c := range commands.Commands {
         if c.Id == id {
             ExecComm(c.Command)
             return
@@ -143,7 +158,7 @@ func ExecCommandFromId(id int) {
 }
 
 func isExit(comm string) *Command {
-    for _, c := range commamds.Commands {
+    for _, c := range commands.Commands {
         if c.Command == comm {
             return &c
         }
@@ -154,7 +169,7 @@ func isExit(comm string) *Command {
 //获取最大id
 func maxId() int {
     max := 0
-    for _, c := range commamds.Commands {
+    for _, c := range commands.Commands {
         if c.Id > max {
             max = c.Id
         }

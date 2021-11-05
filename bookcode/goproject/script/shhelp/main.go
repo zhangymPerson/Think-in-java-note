@@ -49,6 +49,11 @@ func Run(c *cli.Context) error {
         fmt.Println(res)
         os.Exit(0)
     }
+    delId := c.Int("delete")
+    if 0 != delId {
+        server.DeleteCommand(delId)
+        os.Exit(0)
+    }
     fmt.Println("请输入 -h 查看命令帮助")
     return nil
 }
@@ -80,7 +85,7 @@ func initFlag() []cli.Flag {
             Usage:       "已经添加的命令集合",
             DefaultText: "false",
         },
-        &cli.StringFlag{
+        &cli.IntFlag{
             Name:    "delete",
             Aliases: []string{"d"},
             Usage:   "要删除的命令",
