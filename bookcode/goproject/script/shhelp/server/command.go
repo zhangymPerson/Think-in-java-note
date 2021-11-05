@@ -61,9 +61,10 @@ func GetCommands() Commands {
 }
 
 //添加command
-func AddCommand(comm string) {
+func AddCommand(comm string, info string) {
     command := Command{
         Command: comm,
+        Info:    info,
     }
     // 去重
     if len(commands.Commands) == 0 {

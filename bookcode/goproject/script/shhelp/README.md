@@ -28,7 +28,7 @@
 
 - 使用方式
 
-  go run main.go -f /youpath/command.json -id 1
+  go run /*.go -f /youpath/command.json -id 1
 
 - 执行结果
 
