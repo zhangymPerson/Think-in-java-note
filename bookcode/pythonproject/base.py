@@ -5,11 +5,15 @@ python 脚本的基本模板
 标准脚本模板
 """
 import logging
+from os import linesep
+import sys
 LOG_FORMAT = "%(asctime)s - %(levelname)s - %(message)s"  # 日志格式化输出
 DATE_FORMAT = "%m/%d/%Y %H:%M:%S %p"  # 日期格式
 # 配置脚本日志记录文件，可不记录到日志文件中
 # 取消方式 注释掉 fp 并在 handlers 中去掉 fp
-fp = logging.FileHandler('script-run.txt', encoding='utf-8')
+# sys.argv[0] 是脚本名称 截取掉 .py 字符
+logName = ("%s.log") % sys.argv[0][0:-3]
+fp = logging.FileHandler(logName, encoding='utf-8')
 fs = logging.StreamHandler()
 logging.basicConfig(level=logging.DEBUG, format=LOG_FORMAT,
                     datefmt=DATE_FORMAT, handlers=[fs, fp])  # 调用
@@ -23,11 +27,9 @@ def fileCommand():
         f.write('test')
     # 读 r
     with open('a.txt', 'r', encoding='utf-8') as f:
-        res = f.readlines()
-        print(res)
-
-
-# 读写 mysql redis 见 db目录下的脚本
+        lines = f.readlines()
+        for line in lines:
+            print(line)
 
 
 def run():
@@ -53,5 +55,15 @@ def main():
     logging.info("script end ...")
 
 
+def arg():
+    """
+    python获取脚本参数
+    """
+    print("脚本名：", sys.argv[0])
+    for i in range(1, len(sys.argv)):
+        print("参数", i, sys.argv[i])
+
+
 if __name__ == '__main__':
-    main()
+    # main()
+    arg()
