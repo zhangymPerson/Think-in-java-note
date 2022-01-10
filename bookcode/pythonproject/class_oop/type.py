@@ -51,21 +51,21 @@ def typeof(variate):
     """
     判断变量类型的函数
     """
-    type=None
+    type = None
     if isinstance(variate, int):
-        type="int"
+        type = "int"
     elif isinstance(variate, str):
-        type="str"
+        type = "str"
     elif isinstance(variate, float):
-        type="float"
+        type = "float"
     elif isinstance(variate, list):
-        type="list"
+        type = "list"
     elif isinstance(variate, tuple):
-        type="tuple"
+        type = "tuple"
     elif isinstance(variate, dict):
-        type="dict"
+        type = "dict"
     elif isinstance(variate, set):
-        type="set"
+        type = "set"
     return type
 
 
@@ -73,9 +73,9 @@ def getType(variate):
     """
     判断变量类型的函数
     """
-    arr={"int": "整数", "float": "浮点", "str": "字符串",
+    arr = {"int": "整数", "float": "浮点", "str": "字符串",
            "list": "列表", "tuple": "元组", "dict": "字典", "set": "集合"}
-    vartype=typeof(variate)
+    vartype = typeof(variate)
     if not (vartype in arr):
         return "未知类型"
     return arr[vartype]
